@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vínculo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="icon" href="./img/LogoAzul.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  </head>
+  <body>
+    <nav class="navbar-custom desktop-nav navbar-expand-lg py-3 d-none d-lg-flex">
+      <div class="container">
+        <div class="d-flex flex-wrap w-100 align-items-center">
+          <ul class="navbar-nav d-flex flex-row gap-4 align-items-center flex-grow-1 justify-content-center mb-2 mb-md-0">
+            <li class="nav-item"><a class="nav-link" href="#equipo-section">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" href="#servicios-section">Metodo</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+               <img src="img/LogoBlanco.png" alt="" width="35" height="35" fill="white" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zm0 7.7L4.4 7 12 3.3 19.6 7 12 9.7zm0 2.6L2 8v8l10 5 10-5V8l-10 5.3z"/>
+              </img>
+              </a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#blog-section">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="#data-section">Contacto</a></li>
+          </ul>
+          <div class="ms-auto d-flex justify-content-end">
+              <a class="btn btn-outline-light rounded-pill px-3 py-1 subscribe-trigger" href="#">Suscríbete</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+          <!-- formulario oculto -->
+
+      <div id="subscribeForm" class="subscribe-form hidden">
+      <form>
+        <h2>Suscríbete a nuestro boletín</h2>
+        
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+        
+        <button type="submit">Enviar</button>
+        <button type="button" id="closeSubscribe">Cerrar</button>
+      </form>
+      </div>
+    <nav class="mobile-nav d-flex d-lg-none justify-content-around align-items-center px-3 py-2" >
+      <a href="#equipo-section"><i class="bi bi-people" style="font-size: 1.5rem; color: white;"></i></a>
+      <a href="#servicios-section"><i class="bi bi-box-seam" style="font-size: 1.5rem; color: white;"></i></a>
+      <a href="#"><img src="img/LogoBlanco.svg" alt="Logo" width="30"></a>
+      <a href="#blog-section"><i class="bi bi-journal-text" style="font-size: 1.5rem; color: white;"></i></a>
+      <a href="#data-section"><i class="bi bi-envelope" style="font-size: 1.5rem; color: white;"></i></a>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <p class="scroll-item">Bienvenido a tu espacio de bienestar personal Rincón de calma y mindfulness. Tu nuevo ritual semanal de Conectar contigo mismo y renovarte</p>
+        <h2 class="scroll-item">Vínculo</h2>
+      </section>
+  
+      <section id="equipo-section" class=" py-5">
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <!-- Cita + Imagen -->
+      <div class="col-md-6 text-center mb-4 mb-md-0">
+        <blockquote class="scroll-item fs-3 fw-bold">
+          <i class="bi bi-quote" style="font-size: 2rem;"></i>
+            Nuestra prioridad es cultivar una conexión profunda con la mente.
+          <i class="bi bi-quote" style="font-size: 2rem ; transform: rotate(180deg);"></i>
+        </blockquote>
+
+        <h3 class="scroll-item fst-italic">-Cristian Bernal</h3>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="img/equipo1.jpg" alt="Equipo creativo" class="scroll-item img-fluid rounded shadow" style="width: 80%;">
+      </div>
+    </div>
+
+   <div class="row align-items-start">
+      <!-- Columna 1: Nuestro Equipo -->
+      <div class="scroll-item col-md-3 mb-4 mb-md-0">
+        
+        <a href="nosotros.html" class="btn-nosotros shadow-effect rounded-pill px-3 py-1"> Nuestro Equipo <span class="arrow">→</span></a> 
+
+        <div class="equipo-item">
+          <img src="img/fredy.JPG" alt="Fredy Oviedo" class="avatar">
+          <div>
+            <strong>Fredy Oviedo</strong><br>
+            <small class="text-muted">Animador</small>
+          </div>
+        </div>
+
+        <div class="equipo-item">
+          <img src="img/sharon.jpg" alt="Sharon Nicol" class="avatar">
+          <div>
+            <strong>Sharon Nicol</strong><br>
+            <small class="text-muted">Directora Visual</small>
+          </div>
+        </div>
+
+        <div class="equipo-item">
+          <img src="img/Liz.jpg" alt="Lizeth Bautista" class="avatar">
+          <div>
+            <strong>Lizeth Bautista</strong><br>
+            <small class="text-muted">Directora</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2: Texto -->
+      <div class="scroll-item col-md-5">
+        <p>
+          Creemos que el bienestar comienza con pequeños pasos hacia el cuidado de la mente y el ser. 
+          Por eso creamos este blog: para mostrar que la salud mental es tan importante como la física. 
+        </p>
+        <p>
+          Compartimos recursos y experiencias para que el autocuidado sea accesible y comprensible para todos, 
+          ayudándote a reconectar contigo mismo y vivir en armonía.
+        </p>
+      </div>
+
+      <!-- Columna 3: Misión -->
+          <div class="scroll-item mision col-md-3">
+      <p>
+        La misión de nuestro blog es ayudar a las personas a descubrir cómo cuidar su bienestar mental 
+        sin dejar de ser parte activa de la vida moderna.
+      </p>
+
+      <div class="creditos">
+        <span><strong>Clap Grupo Creativo</strong></span>
+        <span>2025</span>
+      </div>
+</div>
+    </div>
+  </div>
+      </section>
+    <section class="scroll-item intro-section container-fluid">
+  <div class="row align-items-center">
+    <!-- Columna de imágenes -->
+    <div class="col-md-6 intro-image">
+      <img class="imagen1" src="img/MeditationScene.jpeg" alt="Personas relajándose">
+      <img class="imagen2" src="img/FeetYog.jpeg" alt="Personas relajándose">
+    </div>
+
+    <!-- Columna de texto -->
+    <div class="col-md-6 intro-text">
+      <h2>Descubre tu espacio de calma y renovación</h2>
+      <h3>Tu refugio para reconectar con el cuerpo y la mente.</h3>
+      <p>
+        En Vínculo, acompaña tu rutina diaria con nuestra selección de contenidos para liberar el estrés y mantenerte enfocado. Además, descubre técnicas simples de ejercicios activos, de estiramientos y respiración, que te ayudarán a recuperar energía y equilibrar cuerpo y mente en tu día a día.
+      </p>
+    </div>
+  </div>
+</section>
+
+      <section id="servicios-section">
+        <div class="scroll-item container">
+          <div class="row">
+            <section class="articulo1">
+              <div class="col-md-6">
+              <img src="img/estirar.jpg" alt="" class="img-fluid rounded shadow">
+              </div>
+              <div class="col-md-6">
+              <h1>Técnicas de bienestar</h1>
+              <h3>La clave para cuidar tu mente y cuerpo durante el día</h3>
+              <p>Las técnicas de bienestar dejaron de ser solo ejercicios básicos para convertirse en prácticas innovadoras que están revolucionando la forma en que cuidamos nuestra mente y cuerpo. </p>
+              <div class="scroll-item article-list">
+                      <a href="articulosblog1.html" style="text-decoration: none; color: inherit;">
+                      <article class="blog-card">
+                      
+                        <div class="blog-content">
+                          <div class="author-info">
+                            <img src="img/fredy.JPG" alt="Fredy Oviedo" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div >
+                              <strong>Fredy Oviedo</strong>
+                              <small class="text-muted text-end">Diseñador</small>
+                            </div>
+                          </div>
+                          <h5>Guía para crear tu propio espacio de bienestar en casa o la oficina</h5>
+                          <p>Crea un espacio funcional que promueva la relajación y productividad.</p>
+                        </div>
+                      </article>
+                      </a>
+                      <a href="articulosblog1.html" style="text-decoration: none; color: inherit;">
+                      <article class="blog-card">
+                      
+                        <div class="blog-content">
+                          <div class="author-info">
+                            <img src="img/fredy.JPG" alt="Fredy Oviedo" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div >
+                              <strong>Fredy Oviedo</strong>
+                              <small class="text-muted text-end">Diseñador</small>
+                            </div>
+                          </div>
+                          <h5>Guía para crear tu propio espacio de bienestar en casa o la oficina</h5>
+                          <p>Crea un espacio funcional que promueva la relajación y productividad.</p>
+                        </div>
+                      </article>
+                      </a>
+                      <a href="articulosblog1.html" style="text-decoration: none; color: inherit;">
+                      <article class="blog-card">
+                        <div class="blog-content">
+                          <div class="author-info">
+                            <img src="img/fredy.JPG" alt="Fredy Oviedo" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div >
+                              <strong>Fredy Oviedo</strong>
+                              <small class="text-muted">Diseñador</small>
+                            </div>
+                          </div>
+                          <h5>Cómo la música relajante mejora tu concentración y reduce el estrés</h5>
+                          <p>La música ambiental ayuda a mantener la calma y mejorar el enfoque.</p>
+                        </div>
+                      </article>
+                      </a>
+                    </div>
+              </div>
+            </section>
+             <section class="articulo1">
+               <div class="col-md-6">
+                 <h1>Microdescanso </h1>
+                 <h3>el secreto para mantener tu equilibrio en días de trabajo intenso</h3>
+                 <p>Los microdescansos, también conocidos como pausas activas, son breves momentos que interrumpen tu rutina diaria para que puedas realizar movimientos suaves, estiramientos o ejercicios de...</p>
+               <div class="scroll-item article-list">
+                  <a href="articulosblog1.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                  <article class="blog-card">
+                    <div class="blog-content">
+                      <div class="author-info">
+                        <img src="img/fredy.JPG" alt="Fredy Oviedo" style="width: 40px; height: 40px; border-radius: 50%;">
+                        <div >
+                          <strong>Fredy Oviedo</strong>
+                          <small class="text-muted ">Diseñador</small>
+                        </div>
+                      </div>
+                      <h5>Beneficios de las pausas activas durante la jornada laboral</h5>
+                      <p>Las pausas activas mejoran la salud física y mental, aumentando el rendimiento.</p>
+                    </div>
+                  </article>
+                  </a>
+                  <a href="articulosblog1.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                  <article class="blog-card">  
+    <div class="blog-content">
+      <div class="author-info">
+        <img src="img/fredy.JPG" alt="Fredy Oviedo" style="width: 40px; height: 40px; border-radius: 50%;">
+        <div >
+          <strong>Fredy Oviedo</strong>
+          <small class="text-muted text-end">Diseñador</small>
+        </div>
+      </div>
+      <h5>Guía para crear tu propio espacio de bienestar en casa o la oficina</h5>
+      <p>Crea un espacio funcional que promueva la relajación y productividad.</p>
+    </div>
+                  </article>
+                  </a>
+                  <a href="articulosblog1.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                  <article class="blog-card">
+    <div class="blog-content">
+      <div class="author-info">
+        <img src="img/fredy.JPG" alt="Fredy Oviedo" style="width: 40px; height: 40px; border-radius: 50%;">
+        <div >
+          <strong>Fredy Oviedo</strong>
+          <small class="text-muted">Diseñador</small>
+        </div>
+      </div>
+      <h5>Cómo la música relajante mejora tu concentración y reduce el estrés</h5>
+      <p>La música ambiental ayuda a mantener la calma y mejorar el enfoque.</p>
+    </div>
+                  </article>
+                  </a>
+</div>
+                </div>
+                <div class="col-md-6">
+                <img src="img/pausas.jpg" alt="" class="img-fluid rounded shadow">
+                
+                </div>
+            </section>
+             <section class="articulo1">
+              <div class="col-md-6">
+              <img src="img/musica.jpg" alt="" class="img-fluid rounded shadow">
+              </div>
+              <div class="col-md-6">
+              <h1>Brain flossing </h1>
+              <h3>Libera la carga de preocupaciones que acumula tu mente </h3>
+              <p>El brain flossing es una técnica de música relajante que usa sonidos binaurales y efectos 8D para sincronizar las ondas cerebrales y promover la relajación profunda.</p> 
+              <br>
+              <iframe style="height:70%;width:100%" frameborder="0" allow="autoplay" scrolling="no" src="https://w.soundcloud.com/player?url=https%253A%252F%252Fsoundcloud.com%252Fvinculo-45099511%252Fsets&amp;show_comments=false&amp;show_user=true&amp;visual=true&amp;show_reposts=false&amp;auto_play=false&amp;show_teaser=true&amp;hide_related=false&amp;color=rgb%28255%2C+85%2C+0%29">
+             </iframe>
+              </div>
+            </section>
+          </div>
+        </div>      
+      </section>
+      <section class="scroll-item comunidad-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1>Conoce nuestra comunidad</h1>
+               <p>Nuestra comunidad en Vínculo es un espacio donde compartimos prácticas como pausas activas, mindfulness, sesiones de música relajante y brain flossing para liberar el estrés y mejorar el bienestar mental. Aquí te apoyamos para incorporar estas técnicas en tu día a día, conectarte con otros y encontrar equilibrio en cuerpo y mente</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+  
+
+
+<section class="scroll-item redes ">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+
+      <!-- Columna 1: Instagram post 1 -->
+      <div class="col-12 col-md-4">
+        <div class="ratio ratio-1x1">
+          <iframe src="https://www.instagram.com/p/DKI2A8lsPqu/embed/" 
+                  frameborder="0" 
+                  scrolling="no"
+                  allowtransparency="true">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Columna 2: Instagram post 2 -->
+      <div class="col-12 col-md-4">
+        <div class="ratio ratio-1x1">
+          <iframe src="https://www.instagram.com/p/DLtTVjSsf4p/embed/" 
+                  frameborder="0" 
+                  scrolling="no"
+                  allowtransparency="true">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Columna 3: TikTok en mockup -->
+      <div class="col-12 col-md-4 d-flex justify-content-center">
+        <div class="phone-mockup">
+          <div class="tiktok-video">
+            <iframe 
+              src="https://www.tiktok.com/embed/v2/7518510497877069062" 
+              width="100%" 
+              height="100%" 
+              frameborder="0" 
+              allowfullscreen 
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="blog-section">
+  <h2 class="scroll-item blog-title">El Diario Creativo </h2>
+  <div class="blog-grid">
+
+    <article class="scroll-item featured-article">
+        <a href="articulosblog1.html" class="article-link">
+      <div class="article-image">
+        <img src="img/img20.jpg" alt="Artículo destacado">
+        <span class="category-label economy">CUIDADO</span>
+      </div>
+      <div class="overlay-info">
+        <h3>Cómo identificar los primeros signos de estrés laboral en profesiones creativas</h3>
+      </div>
+      </a>
+    </article>
+
+    <!-- Artículo secundario 1 -->
+    <article class="scroll-item small-article small-style">
+        <a href="articulosblog1.html" class="article-link">
+      <div class="article-image">
+        <img src="img/tecnicas.jpg" alt="Artículo 1">
+        <span class="category-label style">PAUSAS ACTIVAS </span>
+      </div>
+      <div class="overlay-info">
+        <h4>Técnicas rápidas de relajación para estudiantes y profesionales multimedia</h4>
+      </div>
+      </a>
+    </article>
+
+    <!-- Artículo secundario 2 -->
+    <article class="scroll-item small-article small-art">
+       <a href="articulosblog1.html" class="article-link">
+      <div class="article-image">
+        <img src="img/earthing.jpg" alt="Artículo 2">
+        <span class="category-label art">MEDITACION</span>
+      </div>
+      <div class="overlay-info">
+        <h4>Earthing: qué es y cómo puede ayudarte a reducir la ansiedad en el trabajo</h4>
+      </div>
+    </a>
+    </article>
+</section>
+
+<section class="scroll-item testimonios-section py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="p-3 border rounded shadow-sm h-100">
+          <h3>Daniela</h3> <small>Redactora de contenidos </small>
+          <p> "Unirme a Vínculo fue un punto de inflexión para mi creatividad y productividad. Los artículos del equipo sobre cómo crear rutinas y gestionar el estrés fueron justo lo que necesitaba para superar el agotamiento. Hoy escribo con más concentración, equilibrio y alegría que nunca"</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="p-3 border rounded shadow-sm h-100">
+          <h3>Julián</h3>  <small>Productor musical</small>
+          <p>"Como freelance, es fácil sentirse aislado y abrumado. La comunidad de Vínculo me demostró que no estoy solo. Desde listas de reproducción de jazz seleccionadas que me ayudan a conectar con mi entorno, hasta publicaciones de blogs reveladoras y foros de apoyo, he encontrado nueva motivación y amigos que realmente entienden el proceso creativo"</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="p-3 border rounded shadow-sm h-100">
+          <h3>Mateo </h3> <small> Escritor</small>
+          <p>"Solía ​​pasar de un proyecto a otro sin terminar ninguno. Gracias al podcast de Vínculo y a su comunidad de apoyo, aprendí a concentrar mi energía y a llevar las cosas a cabo. Ahora celebro cada pieza terminada, grande o pequeño"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</section>
+ <section id="data-section">
+   <h2 class="scroll-item">Vínculo</h2>
+  <div class="scroll-item container">
+
+    <div class="row justify-content-between">
+      <!-- Columna izquierda -->
+      <div class="footer__content--left col-md-6 col-lg-7">
+        <!-- Subheading -->
+        <div class="footer__sub-heading mb-3">
+          <h3 class="heading-5">Conecta Con Nosotros</h3>
+          <div class="footer__social--media desktop__content">
+            <a href="https://www.tiktok.com/@vinculo_estacontigo" target="_blank" class="footer__social--media-link w-inline-block">
+              <img src="https://cdn.prod.website-files.com/676552236d16f63fb6379e5a/676552236d16f63fb6379e7b_Vector%20(4).svg" loading="lazy" alt="TikTok" class="footer__social--media-image">
+            </a>
+            <a href="https://www.instagram.com/vinculo_estacontigo/" target="_blank" class="footer__social--media-link w-inline-block">
+              <img src="https://cdn.prod.website-files.com/676552236d16f63fb6379e5a/676552236d16f63fb6379e79_Group%2010.svg" loading="lazy" alt="Instagram" class="footer__social--media-image">
+            </a>
+          </div>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="footer__info">
+          <div class="footer__info--item">
+            <img src="https://cdn.prod.website-files.com/676552236d16f63fb6379e5a/676552236d16f63fb6379e7c_Vector%20(6).svg" loading="lazy" alt="Horario" class="image-15">
+            <p class="paragraph-3">Horario 10.00 AM - 08.00 PM</p>
+          </div>
+          <div class="footer__info--item">
+            <img src="https://cdn.prod.website-files.com/676552236d16f63fb6379e5a/676552236d16f63fb6379e87_Vector%20(7).svg" loading="lazy" alt="Correo" class="image-16">
+            <p class="paragraph-3">vinculo.estacontigo@gmail.com</p>
+          </div>
+          <div class="footer__info--item">
+            <img src="https://cdn.prod.website-files.com/676552236d16f63fb6379e5a/676552236d16f63fb6379e85_Vector%20(8).svg" loading="lazy" alt="Ubicación" class="image-17">
+            <p class="paragraph-3">SENA – CENIGRAF, Bogotá D.C.</p>
+          </div>
+          <div class="footer__info--item">
+            <img src="https://cdn.prod.website-files.com/676552236d16f63fb6379e5a/676552236d16f63fb6379e86_Vector%20(9).svg" loading="lazy" alt="Teléfono" class="image-18">
+            <a href="tel:+573009090099" class="paragraph-3">+57 300 9090099</a>
+          </div>
+        </div>
+
+        <!-- Derechos -->
+        <div class="footer__copyright desktop__content mt-4">
+          <div class="w-layout-hflex flex-block-7">
+            <p class="paragraph-20">© 2025 Clap Grupo Creativo. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha alineada -->
+      <div class="footer__content--right col-md-5 col-lg-4 justify-items-end">
+        <p>Tu bienestar comienza con Vínculo. Recibe información periódica, consejos prácticos y recursos exclusivos para gestionar el estrés y mejorar tu salud emocional en el mundo de la producción multimedia. Únete a nuestra comunidad y accede a contenido innovador, dinámico y gratuito diseñado especialmente para ti</p>
+
+        <a class="btn btn-outline-light rounded-pill px-3 py-1 subscribe-trigger" href="#">Suscríbete</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+    <script src="js/script"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+  </body>
+  
+</html>

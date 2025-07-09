@@ -1,0 +1,106 @@
+// -------------------- GALERÍA HORIZONTAL --------------------
+const section = document.querySelector('.horizontal-scroll-section');
+    const containerWrapper = document.querySelector('.scroll-container-wrapper');
+    const container = document.querySelector('.scroll-container');
+
+    let scrollLength;
+    let containerWidth;
+
+    const setScrollLength = () => {
+      containerWidth = container.scrollWidth;
+      scrollLength = containerWidth - window.innerWidth;
+      section.style.height = containerWidth + 'px';
+    };
+
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset - section.offsetTop;
+      const progress = Math.min(scrollTop / scrollLength, 1);
+      const translateX = -progress * scrollLength;
+      container.style.transform = `translateX(${translateX}px)`;
+    };
+
+    window.addEventListener('load', () => {
+      setScrollLength();
+      handleScroll();
+    });
+
+    window.addEventListener('resize', setScrollLength);
+    window.addEventListener('scroll', handleScroll);
+
+// -------------------- ANIMACIÓN DE ITEMS --------------------
+const elementos = document.querySelectorAll('.scroll-item');
+
+const scrollItemObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.3
+});
+
+elementos.forEach(el => scrollItemObserver.observe(el));
+
+// -------------------- NAVBAR --------------------
+const navbar = document.querySelector(".navbar-custom");
+let lastScrollTop = 0;
+let scrollTimeout;
+
+const handleNavScroll = () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    navbar.classList.add("hide");
+  } else {
+    navbar.classList.remove("hide");
+  }
+
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    navbar.classList.remove("hide");
+  }, 150);
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+};
+
+if (navbar) {
+  window.addEventListener("scroll", handleNavScroll);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  window.addEventListener("beforeunload", () => {
+    window.removeEventListener("scroll", handleNavScroll);
+    clearTimeout(scrollTimeout);
+  });
+}
+// -------------------- TIKTOK --------------------
+ window.addEventListener('DOMContentLoaded', () => {
+    const script = document.createElement('script');
+    script.setAttribute('src', 'https://www.tiktok.com/embed.js');
+    script.setAttribute('async', true);
+    document.body.appendChild(script);
+  })
+// -------------------- FORMULARIO --------------------
+  const subscribeButtons = document.querySelectorAll('.subscribe-trigger');
+  const subscribeForm = document.getElementById('subscribeForm');
+  const closeSubscribe = document.getElementById('closeSubscribe');
+
+  subscribeButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      subscribeForm.classList.add('show');
+      document.body.classList.add('modal-open');
+    });
+  });
+
+  closeSubscribe.addEventListener('click', function() {
+    subscribeForm.classList.remove('show');
+    document.body.classList.remove('modal-open');
+  });
