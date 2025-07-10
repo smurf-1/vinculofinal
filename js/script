@@ -1,106 +1,214 @@
-// -------------------- GALERÍA HORIZONTAL --------------------
-const section = document.querySelector('.horizontal-scroll-section');
-    const containerWrapper = document.querySelector('.scroll-container-wrapper');
+document.addEventListener('DOMContentLoaded', function() {
+  // -------------------- GALERÍA HORIZONTAL --------------------
+  const initHorizontalScroll = () => {
+    const section = document.querySelector('.horizontal-scroll-section');
+    if (!section) return;
+
     const container = document.querySelector('.scroll-container');
+    let rafId;
+    let isScrolling = false;
 
-    let scrollLength;
-    let containerWidth;
-
-    const setScrollLength = () => {
-      containerWidth = container.scrollWidth;
-      scrollLength = containerWidth - window.innerWidth;
-      section.style.height = containerWidth + 'px';
+    const setDimensions = () => {
+      const containerWidth = container.scrollWidth;
+      const scrollLength = containerWidth - window.innerWidth;
+      section.style.height = `${containerWidth * 0.6}px`;
+      container.style.marginLeft = `${(window.innerWidth - containerWidth) / 2}px`;
     };
 
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset - section.offsetTop;
-      const progress = Math.min(scrollTop / scrollLength, 1);
-      const translateX = -progress * scrollLength;
-      container.style.transform = `translateX(${translateX}px)`;
+      if (isScrolling) return;
+      
+      isScrolling = true;
+      rafId = requestAnimationFrame(() => {
+        const scrollTop = window.pageYOffset - section.offsetTop + window.innerHeight * 0.3;
+        const scrollLength = container.scrollWidth - window.innerWidth;
+        const progress = Math.min(Math.max(scrollTop / scrollLength, 0), 1);
+        const translateX = -progress * scrollLength;
+        
+        container.style.transform = `translateX(${translateX}px)`;
+        isScrolling = false;
+      });
     };
 
-    window.addEventListener('load', () => {
-      setScrollLength();
-      handleScroll();
+    // Inicialización
+    setDimensions();
+    window.addEventListener('load', setDimensions);
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(rafId);
+      setDimensions();
+    });
+    window.addEventListener('scroll', handleScroll);
+  };
+
+  // -------------------- ANIMACIONES AL SCROLL --------------------
+  const initScrollAnimations = () => {
+    const elementos = document.querySelectorAll('.scroll-item');
+    if (elementos.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
     });
 
-    window.addEventListener('resize', setScrollLength);
-    window.addEventListener('scroll', handleScroll);
+    elementos.forEach(el => observer.observe(el));
+  };
 
-// -------------------- ANIMACIÓN DE ITEMS --------------------
-const elementos = document.querySelectorAll('.scroll-item');
+  // -------------------- NAVBAR --------------------
+  const initNavbar = () => {
+    const navbar = document.querySelector(".navbar-custom");
+    if (!navbar) return;
 
-const scrollItemObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, {
-  threshold: 0.3
+    let lastScrollTop = 0;
+    let scrollTimeout;
+
+    const handleNavScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        navbar.classList.add("hide");
+      } else {
+        navbar.classList.remove("hide");
+      }
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        navbar.classList.remove("hide");
+      }, 150);
+
+      if (scrollTop > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    };
+
+    window.addEventListener("scroll", handleNavScroll);
+  };
+
+  // -------------------- FORMULARIO SUSCRIPCIÓN --------------------
+  const initSubscribeForm = () => {
+    const subscribeButtons = document.querySelectorAll('.subscribe-trigger');
+    const subscribeForm = document.getElementById('subscribeForm');
+    const closeSubscribe = document.getElementById('closeSubscribe');
+
+    if (!subscribeButtons.length || !subscribeForm || !closeSubscribe) return;
+
+    const toggleForm = (show) => {
+      if (show) {
+        subscribeForm.classList.add('show');
+        document.body.classList.add('modal-open');
+      } else {
+        subscribeForm.classList.remove('show');
+        document.body.classList.remove('modal-open');
+      }
+    };
+
+    subscribeButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleForm(true);
+      });
+    });
+
+    closeSubscribe.addEventListener('click', () => toggleForm(false));
+    subscribeForm.addEventListener('click', (e) => {
+      if (e.target === subscribeForm) toggleForm(false);
+    });
+  };
+
+  // -------------------- INICIALIZAR TODO --------------------
+  initHorizontalScroll();
+  initScrollAnimations();
+  initNavbar();
+  initSubscribeForm();
+
+  // Cargar embeds sociales
+  if (document.querySelector('.instagram-media') && typeof instgrm !== 'undefined') {
+    instgrm.Embeds.process();
+  }
 });
 
-elementos.forEach(el => scrollItemObserver.observe(el));
-
-// -------------------- NAVBAR --------------------
-const navbar = document.querySelector(".navbar-custom");
-let lastScrollTop = 0;
-let scrollTimeout;
-
-const handleNavScroll = () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (scrollTop > lastScrollTop && scrollTop > 100) {
-    navbar.classList.add("hide");
-  } else {
-    navbar.classList.remove("hide");
+// Polyfill para requestAnimationFrame
+(function() {
+  let lastTime = 0;
+  const vendors = ['ms', 'moz', 'webkit', 'o'];
+  
+  for (let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+    window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+    window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || 
+                                 window[vendors[x]+'CancelRequestAnimationFrame'];
   }
 
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    navbar.classList.remove("hide");
-  }, 150);
+  if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = function(callback) {
+      const currTime = new Date().getTime();
+      const timeToCall = Math.max(0, 16 - (currTime - lastTime));
+      const id = window.setTimeout(() => {
+        callback(currTime + timeToCall);
+      }, timeToCall);
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+  }
 
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-};
+  if (!window.cancelAnimationFrame) {
+    window.cancelAnimationFrame = function(id) {
+      clearTimeout(id);
+    };
+  }
+}());
 
-if (navbar) {
-  window.addEventListener("scroll", handleNavScroll);
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
-
-  window.addEventListener("beforeunload", () => {
-    window.removeEventListener("scroll", handleNavScroll);
-    clearTimeout(scrollTimeout);
-  });
-}
-// -------------------- TIKTOK --------------------
- window.addEventListener('DOMContentLoaded', () => {
-    const script = document.createElement('script');
-    script.setAttribute('src', 'https://www.tiktok.com/embed.js');
-    script.setAttribute('async', true);
-    document.body.appendChild(script);
-  })
-// -------------------- FORMULARIO --------------------
-  const subscribeButtons = document.querySelectorAll('.subscribe-trigger');
-  const subscribeForm = document.getElementById('subscribeForm');
-  const closeSubscribe = document.getElementById('closeSubscribe');
-
-  subscribeButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      subscribeForm.classList.add('show');
-      document.body.classList.add('modal-open');
+//chatbotbrend 
+document.addEventListener('DOMContentLoaded', function() {
+    const assistant = document.querySelector('.vinculo-assistant');
+    const trigger = document.querySelector('.assistant-trigger');
+    const closeBtn = document.querySelector('.assistant-close');
+    
+    trigger.addEventListener('click', function() {
+      assistant.classList.toggle('active');
     });
-  });
-
-  closeSubscribe.addEventListener('click', function() {
-    subscribeForm.classList.remove('show');
-    document.body.classList.remove('modal-open');
+    
+    closeBtn.addEventListener('click', function() {
+      assistant.classList.remove('active');
+    });
+    
+    // Ejemplo de interacción básica
+    const inputField = document.querySelector('.assistant-input input');
+    const sendBtn = document.querySelector('.send-btn');
+    const messagesContainer = document.querySelector('.assistant-messages');
+    
+    function addMessage(text, isBot = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', isBot ? 'bot-message' : 'user-message');
+      messageDiv.innerHTML = `<p>${text}</p>`;
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    sendBtn.addEventListener('click', function() {
+      const message = inputField.value.trim();
+      if(message) {
+        addMessage(message);
+        inputField.value = '';
+        
+        // Respuesta automática (simulada)
+        setTimeout(() => {
+          addMessage("En este momento no puedo responder tu mensaje. Que no se te olvide sonreir", true);
+        }, 1000);
+      }
+    });
+    
+    inputField.addEventListener('keypress', function(e) {
+      if(e.key === 'Enter') {
+        sendBtn.click();
+      }
+    });
   });
