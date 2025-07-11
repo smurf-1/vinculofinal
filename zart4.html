@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vínculo - Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/logoBlanco.svg" type="image/svg+xml">
+  <style>
+    /* ESTILOS MEJORADOS PARA BLOG */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: #f8fafc;
+    }
+    
+    /* Barra de navegación */
+    .navbar-custom {
+      background-color: #58B3D2 !important;
+    }
+    
+    .navbar-custom .nav-link {
+      color: white !important;
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-custom .nav-link:hover {
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline-light {
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-light:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+    
+    /* Sección de blog */
+    #blog-section {
+      padding: 5rem clamp(2rem, 10%, 10rem);
+      background: #f8fafc;
+    }
+    
+    .blog-title {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #58B3D2;
+      font-weight: 600;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-areas:
+        "featured sidebar"
+        "content content";
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Artículo destacado */
+    .featured-article {
+      grid-area: featured;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease;
+    }
+    
+    .featured-article:hover {
+      transform: translateY(-5px);
+    }
+    
+    .featured-article img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .article-info {
+      padding: 2.5rem;
+    }
+    
+    .article-info h3 {
+      color: #58B3D2;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    .article-info p {
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+    
+    .article-info strong {
+      color: #58B3D2;
+      font-weight: 600;
+    }
+    
+    /* Sidebar */
+    .blog-sidebar {
+      grid-area: sidebar;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .tags-box, .recent-posts {
+      background: white;
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .tags-box h4, .recent-posts h4 {
+      color: #58B3D2;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #58B3D2;
+      padding-bottom: 0.6rem;
+      font-weight: 600;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    
+    .tags span {
+      background: #e1f0f5;
+      color: #58B3D2;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .tags span:hover {
+      background: #58B3D2;
+      color: white;
+    }
+    
+    .recent-posts ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .recent-posts li {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .recent-posts li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .recent-posts a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      display: block;
+      padding: 0.5rem 0;
+    }
+    
+    .recent-posts a:hover {
+      color: #58B3D2;
+    }
+    
+    /* Lista de artículos */
+    .article-list {
+      grid-area: content;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    
+    .blog-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .blog-content {
+      padding: 1.5rem;
+    }
+    
+    .blog-content h5 {
+      color: #58B3D2;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .blog-content p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    
+    .learn-more {
+      font-weight: bold;
+      color: #58B3D2;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .learn-more:hover {
+      color: #3a9cb8;
+    }
+    
+    .learn-more::after {
+      content: '→';
+      transition: transform 0.2s ease;
+    }
+    
+    .learn-more:hover::after {
+      transform: translateX(3px);
+    }
+    
+    /* Mobile nav */
+    .mobile-nav {
+      background-color: #58B3D2;
+    }
+    
+    .mobile-nav a {
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-nav a:hover {
+      transform: translateY(-3px);
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .blog-title {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-areas:
+          "featured"
+          "sidebar"
+          "content";
+        grid-template-columns: 1fr;
+      }
+      
+      .featured-article img {
+        height: 300px;
+      }
+      
+      .blog-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      
+      .tags-box, .recent-posts {
+        flex: 1 1 300px;
+      }
+      
+      .blog-title {
+        font-size: 2.4rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      #blog-section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .blog-title {
+        font-size: 2rem;
+      }
+      
+      .article-info {
+        padding: 1.5rem;
+      }
+      
+      .article-info h3 {
+        font-size: 1.6rem;
+      }
+      
+      .blog-sidebar {
+        flex-direction: column;
+      }
+      
+      .tags-box, .recent-posts {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar-custom desktop-nav navbar-expand-lg py-3 d-none d-lg-flex">
+    <div class="container">
+      <div class="d-flex flex-wrap w-100 align-items-center">
+        <ul class="navbar-nav d-flex flex-row gap-4 align-items-center flex-grow-1 justify-content-center mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="#equipo-section">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#servicios-section">Método</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <img src="img/LogoBlanco.png" alt="Vinculo Logo" width="35" height="35">
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html#blog-section">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#data-section">Contacto</a></li>
+        </ul>
+        <div class="ms-auto d-flex justify-content-end">
+          <a class="btn btn-outline-light rounded-pill px-3 py-1 subscribe-trigger" href="#">Suscríbete</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="mobile-nav d-flex d-lg-none justify-content-around align-items-center px-3 py-2">
+    <a href="#equipo-section"><i class="bi bi-people" style="font-size: 1.5rem; color: white;"></i></a>
+    <a href="#servicios-section"><i class="bi bi-box-seam" style="font-size: 1.5rem; color: white;"></i></a>
+    <a href="index.html"><img src="img/LogoBlanco.png" alt="Logo" width="30"></a>
+    <a href="#blog-section"><i class="bi bi-journal-text" style="font-size: 1.5rem; color: white;"></i></a>
+    <a href="#data-section"><i class="bi bi-envelope" style="font-size: 1.5rem; color: white;"></i></a>
+  </nav>
+
+  <main>
+    <section id="blog-section">
+      <h2 class="blog-title animate__animated animate__fadeIn">El Diario Creativo</h2>
+      <div class="blog-grid">
+
+        <!-- Artículo destacado -->
+        <article class="featured-article animate__animated animate__fadeInUp">
+          <img src="img/bici.jpg" alt="Artículo destacado">
+          <div class="article-info">
+    <h3>Cómo equilibrar la vida académica, laboral y personal sin perder la calma</h3>
+
+    <p><strong>Mi experiencia durante el tecnólogo en Producción Multimedia</strong></p>
+    <p>Durante esos dos años intensos donde combiné estudios, trabajo y vida personal, descubrí que el equilibrio no es un estado permanente, sino una práctica diaria. La clave estuvo en entender que <strong>el tiempo de calidad personal no es un lujo, sino un requisito para mantener la creatividad</strong>.</p>
+
+    <p><strong>Las 3 lecciones que aprendí:</strong></p>
+    <ol>
+        <li><strong>El mito del "tiempo infinito"</strong>: Programar bloques específicos para cada área (uso la técnica 6-3-1: 6h trabajo/estudio, 3h personal, 1h transiciones)</li>
+        <li><strong>Las micro-pausas son salvavidas</strong>: Cada 90 minutos, 7 minutos de desconexión total (sin pantallas)</li>
+        <li><strong>El deporte como terapia</strong>: Mi bicicleta dejó de ser transporte para convertirse en mi espacio de descompresión mental</li>
+    </ol>
+
+    <div class="testimonial">
+        <p><em>"Los estudiantes que realizan actividad física regular muestran un 28% mejor rendimiento académico y 40% menos estrés percibido"</em> - Estudio de la Universidad de Michigan (2022)</p>
+    </div>
+
+    <p><strong>Cómo implementé el sistema:</strong></p>
+    <table >
+        <tr>
+            <th>Área</th>
+            <th>Estrategia</th>
+            <th>Herramienta</th>
+        </tr>
+        <tr>
+            <td>Académica</td>
+            <td>Bloques de 2h con técnica <br> Pomodoro</td>
+            <td>Google Calendar codificado por colores</td>
+        </tr>
+        <tr>
+            <td>Laboral</td>
+            <td>Límite estricto de 6h diarias</td>
+            <td>App Toggl para tracking</td>
+        </tr>
+        <tr>
+            <td>Personal</td>
+            <td>Rutina deportiva inquebrantable</td>
+            <td>Mi bicicleta y Strava</td>
+        </tr>
+    </table>
+
+    <p><strong>La bicicleta como terapia:</strong></p>
+    <ul>
+        <li><strong>Desconexión creativa:</strong> 45min de pedaleo equivalían a 2h de descanso mental</li>
+        <li><strong>Procesamiento inconsciente:</strong> Las mejores ideas llegaban durante estos recorridos</li>
+        <li><strong>Doble beneficio:</strong> Transporte + ejercicio + meditación en movimiento</li>
+    </ul>
+
+    <p><strong>Consejos para estudiantes-trabajadores:</strong></p>
+    <ol>
+        <li><strong>Encuentra tu "bicicleta"</strong>: Algo que combine actividad física y disfrute (baile, escalada, natación)</li>
+        <li><strong>Protege tus transiciones</strong>: Los 15min entre actividades son sagrados (respiración consciente)</li>
+        <li><strong>Acepta los desequilibrios</strong>: Habrá semanas donde una área demande más - compensa después</li>
+    </ol>
+
+    <div class="highlight-box">
+        <p><strong>Lo que nadie te dice:</strong> Ese 1-2h diaria que "sacrificas" para el autocuidado, te devuelve 3-4h de productividad real. En mi caso, pedalear 45min al día me hizo ganar 2h de concentración.</p>
+    </div>
+
+    <p><strong>Recursos que me ayudaron:</strong></p>
+    <ul>
+        <li>Curso gratuito <a href="https://edutin.com/curso-de-gestion-del-tiempo">"Gestión del Tiempo para Creativos"</a> de u academi</li>
+        <li>Un Comunidad para ciclistas urbanos</li>
+    </ul>
+</div>
+        </article>
+
+        <!-- Sidebar -->
+        <div class="blog-sidebar">
+          <aside class="tags-box animate__animated animate__fadeIn" style="animation-delay: 0.2s;">
+            <h4>Etiquetas</h4>
+            <div class="tags">
+              <span>Bienestar</span>
+              <span>Relajación</span>
+              <span>Meditación</span>
+              <span>Rutinas</span>
+              <span>8D</span>
+              <span>Pausas activas</span>
+              <span>Respiración</span>
+              <span>Creatividad</span>
+              <span>Salud mental</span>
+            </div>
+          </aside>
+
+          <aside class="recent-posts animate__animated animate__fadeIn" style="animation-delay: 0.3s;">
+            <h4>Visto recientemente</h4>
+            <ul>
+              <li><a href="#">Cómo organizar tu espacio de trabajo</a></li>
+              <li><a href="#">Alimentos que mejoran la concentración</a></li>
+              <li><a href="#">Técnicas de respiración para ansiedad</a></li>
+              <li><a href="#">Gestión del tiempo para creativos</a></li>
+              <li><a href="#">Beneficios del ejercicio para la mente</a></li>
+            </ul>
+          </aside>
+        </div>
+
+        <!-- Lista de artículos -->
+        <div class="article-list">
+          <article class="blog-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+            <img src="img/img20.jpg" alt="Artículo 1">
+            <div class="blog-content">
+              <h5>Mindfulness para diseñadores</h5>
+              <p>Ejercicios prácticos para mantener la concentración en proyectos largos.</p>
+              <a href="#" class="learn-more">Leer más</a>
+            </div>
+          </article>
+          
+          <article class="blog-card animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+            <img src="img/img20.jpg" alt="Artículo 2">
+            <div class="blog-content">
+              <h5>Alimentación para la creatividad</h5>
+              <p>Los mejores alimentos para potenciar tu rendimiento creativo.</p>
+              <a href="#" class="learn-more">Leer más</a>
+            </div>
+          </article>
+          
+          <article class="blog-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+            <img src="img/img20.jpg" alt="Artículo 3">
+            <div class="blog-content">
+              <h5>Organización del espacio de trabajo</h5>
+              <p>Cómo diseñar un entorno que favorezca tu flujo creativo.</p>
+              <a href="#" class="learn-more">Leer más</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.js"></script>
+</body>
+</html>

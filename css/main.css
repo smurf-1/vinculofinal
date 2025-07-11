@@ -345,15 +345,12 @@ h4, h5, h6, p {
   }
   
   .assistant-trigger {
-    background-color: #58B3D2;
     color: white;
-    padding: 10px 15px;
     border-radius: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    box-shadow: 0 3px 15px rgba(88, 179, 210, 0.5);
     transition: transform 0.2s ease;
     margin-left: auto;
   }
@@ -1122,13 +1119,12 @@ justify-content: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    gap: 70px;
-    background-image: url(../img/fondo.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-color: #58b3d2;
     background-attachment: fixed;
-  }
+}
 
   #data-section p {
     max-width: 500px;
@@ -1139,9 +1135,9 @@ justify-content: center;
   #data-section h2 {
     font-family: 'League Spartan', sans-serif;
     font-weight: 700;
-    font-size: 7rem;
+    font-size: 11rem;
     margin-top: 0.5rem;
-    color: white;
+    color: #beefff1c;
   }
 
   .footer__content--left {
